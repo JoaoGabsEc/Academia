@@ -18,7 +18,7 @@ public class Interface {
         System.out.println("3 - Cadastrar Aula.");
         System.out.println("4 - Listar Alunos.");
         System.out.println("5 - Listar Instrutores.");
-        System.out.println("6 - Visualizar os tipos de treinos.");
+        System.out.println("6 - Visualizar os tipos de Aulas.");
         System.out.println("0 - Sair.");
         
         System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -58,7 +58,25 @@ public class Interface {
                     
                     System.out.println("Instrutor Cadastrado!");
                 }
+                
+                case 3: {
+                    // Depois de criar a classe aulas
+                }
+                
+                case 4: {
+                    
+                }
+                
+                case 5: {
+                    System.out.println("Lista de Instrutores cadastrados");
+                }
+                
+                case 6: {
+                    //Depois de criar a classe aulas
+                }
+ 
             }
+            
         
         }while (escolha != 0);
         
