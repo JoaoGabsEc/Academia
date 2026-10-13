@@ -2,7 +2,7 @@ package academia;
 
 import java.util.Scanner;
         
-public class Interface {
+public class App {
     
     public static void main(String[] args) {
         
@@ -41,7 +41,12 @@ public class Interface {
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
                 
                     System.out.println("Aluno cadastrado com sucesso!");
-                
+                    System.out.println("Dados do aluno cadastrado:");
+                    System.out.println("Nome" + aluno.getNome());
+                    System.out.println("Cpf:" + aluno.getCpf());
+                    System.out.println("Idade:" + aluno.getIdade());
+                    System.out.println("Telefone:" + aluno.getTelefone());
+                    
                     break;
                 }
             
