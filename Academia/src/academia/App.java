@@ -6,6 +6,8 @@ public class App {
     
     public static void main(String[] args) {
         
+        Academia academia = new Academia("Academia dos Amigos", "Rua 12, Setor Centro", "62 94002-8922");
+        
         Scanner scan = new Scanner(System.in);
         
         int escolha;
