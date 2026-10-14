@@ -1,6 +1,5 @@
 package academia;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Academia {
@@ -10,7 +9,7 @@ public class Academia {
     private String telefone;
     private ArrayList<Aluno> alunos;
     private ArrayList<Instrutor> instrutores;
-//        private ArrayList<Aluno> aulas;
+    private ArrayList<Aula> aulas;
 
     public Academia(String nome, String endereco, String telefone) {
         this.nome = nome;
@@ -18,6 +17,8 @@ public class Academia {
         this.telefone = telefone;
         this.alunos = new ArrayList<Aluno>();
         this.instrutores = new ArrayList<Instrutor>();
+        this.aulas = new ArrayList<Aula>();
+
     }
 
     public String getNome() {
@@ -32,12 +33,33 @@ public class Academia {
         return this.telefone;
     }
 
-    public void cadastrarAluno(Aluno aluno){
+    // cadastrar aluno
+    public void cadastrarAluno(Aluno aluno) {
         this.alunos.add(aluno);
     }
-        
-        public ArrayList<Aluno> listarAlunos() {
+
+    // listar alunos
+    public ArrayList<Aluno> listarAlunos() {
         return this.alunos;
 
+    }
+
+    // cadastrar instrutor 
+    public void cadastrarInstrutor(Instrutor instrutor) {
+        this.instrutores.add(instrutor);
+    }
+    // listar instrutor
+
+    public ArrayList<Instrutor> listarInstrutores() {
+        return this.instrutores;
+    }
+
+    //cadastrar aula
+    public void cadastrarAula(Aula aula) {
+        this.aulas.add(aula);
+    }
+    //listar aula
+    public ArrayList<Aula> listarAula() {
+        return this.aulas;
     }
 }
