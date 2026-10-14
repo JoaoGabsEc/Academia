@@ -20,10 +20,12 @@ public class Academia {
             this.instrutores = new ArrayList<Instrutor>();
             }
         
-        public Strin
+        public String
         
         public ArrayList<Aluno> listarAlunos(){
             return this.alunos;
+            
+            
             
         }
 }
