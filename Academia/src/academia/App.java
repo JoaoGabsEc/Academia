@@ -67,6 +67,8 @@ public class App {
                     
                     Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade);
                     
+                    academia.cadastrarInstrutor(instrutor);
+                    
                     System.out.println("Instrutor Cadastrado!");
                 }
                 
@@ -75,6 +77,7 @@ public class App {
                 }
                 
                 case 4: {
+                    System.out.println("Aqui está a lista de alunos!");
                     
                 }
                 
@@ -83,7 +86,8 @@ public class App {
                 }
                 
                 case 6: {
-                    //Depois de criar a classe aulas
+                    System.out.println("Aqui está a lista de aulas disponíveis!");
+                    
                 }
  
             }
