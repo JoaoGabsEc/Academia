@@ -5,13 +5,20 @@ public class Aula {
     private double valorDaDiaria = 100;
     private String superior;
     private String inferior;
-    
    
  public Aula (double valorDaDiaria, String superior){
      this.valorDaDiaria = valorDaDiaria;
      this.superior = superior;
      
  }
+ 
+  public Aula ( String inferior ,double valorDaDiaria){
+     this.valorDaDiaria = valorDaDiaria;
+     this.superior = inferior;
+     
+  }
+     
+     
     public double getValorDaDiaria(){
         return this.valorDaDiaria;
     }
