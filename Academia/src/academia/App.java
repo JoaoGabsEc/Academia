@@ -73,7 +73,7 @@ public class App {
                 }
                 
                 case 3: {
-                    
+                    System.out.println("Olá, siga as instruções para ");
                 }
                 
                 case 4: {

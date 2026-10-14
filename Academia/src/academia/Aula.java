@@ -14,7 +14,7 @@ public class Aula {
  
   public Aula ( String inferior ,double valorDaDiaria){
      this.valorDaDiaria = valorDaDiaria;
-     this.superior = inferior;
+     this.inferior = inferior;
      
   }
      
