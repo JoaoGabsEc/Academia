@@ -41,6 +41,8 @@ public class App {
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
                 
                     System.out.println("Aluno cadastrado com sucesso!");
+                    
+                    
                     System.out.println("Dados do aluno cadastrado:");
                     System.out.println("Nome" + aluno.getNome());
                     System.out.println("Cpf:" + aluno.getCpf());
