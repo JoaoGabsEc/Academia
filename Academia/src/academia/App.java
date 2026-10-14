@@ -73,7 +73,17 @@ public class App {
                 }
                 
                 case 3: {
-                    System.out.println("Olá, siga as instruções para ");
+                    int escolhaAula;
+                    System.out.println("\nOlá, siga as instruções para cadastrar sua aula\n");
+                    System.out.println("1- Superior -- R$100");
+                    escolhaAula = scan.nextInt();
+                    
+                    System.out.println("2- Superior -- R$200");
+                    escolhaAula = scan.nextInt();
+                    
+                    if(escolhaAula == 1){
+                        
+                    }
                 }
                 
                 case 4: {
