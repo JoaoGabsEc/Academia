@@ -11,11 +11,11 @@ public class App {
         Scanner scan = new Scanner(System.in);
         
         int escolha;
-        int escolhaAula;
+        int escolhaAula = 0; // teve que inializar a variavel, pois n estava recebendo um valor
         
         do{
         
-        System.out.println("\n\nOla, qual acao deseja realizar?\n\n");
+        System.out.println("\nOla, qual acao deseja realizar?\n");
         System.out.println("1 - Cadastrar um Aluno.");
         System.out.println("2 - Cadastrar um Instrutor.");
         System.out.println("3 - Listar Alunos.");
@@ -43,9 +43,8 @@ public class App {
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
                 
                     System.out.println("\nAluno cadastrado com sucesso!\n");
-                    
+                     
                     academia.cadastrarAluno(aluno);
-                    
                     System.out.println("Agora escolha qual aula deseja cadastrar o aluno\n");
                     System.out.println("Aulas disponiveis!");
                     System.out.println("Valores da aula 120R$\n");
@@ -86,14 +85,15 @@ public class App {
                 }
                 
                 case 3: {
-                    
+                 
                     System.out.println("Aqui esta a lista de alunos!");
                     for (int i = 0; i < academia.listarAlunos().size(); i++){
                         
+                        System.out.println("=======================");
                         Aluno aluno = academia.listarAlunos().get(i);
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
-                        System.out.println("Aula vinculada ao aluno: ");
+                        System.out.println("Aula vinculada ao aluno:" + escolhaAula);
                         System.out.println("=======================");
                         
                     }
