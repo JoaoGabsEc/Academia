@@ -67,7 +67,7 @@ public class App {
                 }
                 
                 case 3: {
-                    // Depois de criar a classe aulas
+                    
                 }
                 
                 case 4: {
