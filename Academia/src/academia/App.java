@@ -6,21 +6,22 @@ public class App {
 
     public static void main(String[] args) {
 
-        Academia academia = new Academia("Academia dos Amigos", "Rua 12, Setor Centro", "62 94002-8922");
+        Academia academia = new Academia("Better life", "Rua 12, Setor Centro", "62 94002-8922", "0001/2026");
 
         Scanner scan = new Scanner(System.in);
 
-
+        System.out.println("Bem vindo a Academia " + academia.getNome());
         int escolha;
         int escolhaAula;
         do {
-
+            
             System.out.println("\nOla, qual acao deseja realizar?\n");
             System.out.println("1 - Cadastrar um Aluno.");
             System.out.println("2 - Cadastrar um Instrutor.");
             System.out.println("3 - Listar Alunos.");
             System.out.println("4 - Listar Instrutores.");
             System.out.println("5 - Visualizar os tipos de aulas.");
+            System.out.println("6 - Sobre nos.");
             System.out.println("0 - Sair.");
 
             System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -137,7 +138,16 @@ public class App {
                     System.out.println("Lista de aulas");
                     break;
                 }
-
+                
+                case 6: {
+                
+                    System.out.println("\n======================");
+                    System.out.println("Academia " + academia.getNome());
+                    System.out.println("CNPJ: " + academia.getCnpj());
+                    System.out.println("Localizados no endereco " + academia.getEndereco());
+                    System.out.println("Fale com a nossa equipe via Whatsaap " + academia.getTelefone());
+                    System.out.println("\n======================");
+                }
             }
 
         } while (escolha != 0);

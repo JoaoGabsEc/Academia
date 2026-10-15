@@ -7,14 +7,16 @@ public class Academia {
     private String nome;
     private String endereco;
     private String telefone;
+    private String cnpj;
     private ArrayList<Aluno> alunos;
     private ArrayList<Instrutor> instrutores;
     private ArrayList<Aula> aulas;
 
-    public Academia(String nome, String endereco, String telefone) {
+    public Academia(String nome, String endereco, String telefone, String cnpj) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.cnpj = cnpj;
         this.alunos = new ArrayList<Aluno>();
         this.instrutores = new ArrayList<Instrutor>();
         this.aulas = new ArrayList<Aula>();
@@ -61,5 +63,9 @@ public class Academia {
     //listar aula
     public ArrayList<Aula> listarAula() {
         return this.aulas;
+    }
+    
+    public String getCnpj(){
+        return this.cnpj;
     }
 }
