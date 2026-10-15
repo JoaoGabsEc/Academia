@@ -10,10 +10,9 @@ public class App {
 
         Scanner scan = new Scanner(System.in);
 
-        String treino = ""; // ele pega sempre o ultimo dado pra ele ex: 1
-        int escolha;
-        int escolhaAula = 0; // teve que inializar a variavel, pois n estava recebendo um valor 
 
+        int escolha;
+        int escolhaAula;
         do {
 
             System.out.println("\nOla, qual acao deseja realizar?\n");
@@ -46,26 +45,38 @@ public class App {
                     System.out.println("\nAluno cadastrado com sucesso!\n");
 
                     academia.cadastrarAluno(aluno);
+                    
                     System.out.println("Agora escolha qual aula deseja cadastrar o aluno\n");
                     System.out.println("Aulas disponiveis!");
                     System.out.println("Valores da aula 120R$\n");
-                    System.out.println("1 -- Superior");
+                    
+                    do {
+                        System.out.println("1 -- Superior");
                     System.out.println("2 -- Inferior");
                     escolhaAula = scan.nextInt();
                     
-                    if (escolhaAula == 1) {
+                        if (escolhaAula == 1) {
 
-                        Aula aula = new Aula(120, "superior");
-                        treino = " superior";
-
+                        Aula aula = new Aula(120, "Superior");
+                        
+                        aluno.setAula(aula);
+                                
+                        academia.cadastrarAula(aula);
+                        
                     } else if (escolhaAula == 2) {
-
-                        Aula aula = new Aula("Inferior", 120);
-                        treino = " inferior";                       
+                        
+                        Aula aula = new Aula(120, "Inferior");
+                        
+                        aluno.setAula(aula);
+                        academia.cadastrarAula(aula);
+                    }else {
+                        System.out.println("\n\nOpcao Invalida\n\n");
                     }
-
-                    System.out.println("Aula vinculada ao aluno " + nome + " com sucesso!");
-
+                    
+                    } while (escolhaAula != 1 && escolhaAula != 2);
+                    
+                    System.out.println("\nAula vinculada ao aluno " + nome + " com sucesso!\n");
+                    
                     break;
                 }
 
@@ -76,7 +87,7 @@ public class App {
                     System.out.println("Digite o cpf do Instrutor");
                     String cpf = scan.next();
 
-                    boolean disponibilidade = true; //todos estarão disponiveis
+                    boolean disponibilidade = true;
 
                     Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade);
 
@@ -94,9 +105,10 @@ public class App {
 
                         System.out.println("=======================");
                         Aluno aluno = academia.listarAlunos().get(i);
+                        Aula aula = academia.listarAula().get(i);
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
-                        System.out.println("Aula vinculada ao aluno:" + treino);
+                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula());
                         System.out.println("=======================");
 
                     }

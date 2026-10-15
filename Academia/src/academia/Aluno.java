@@ -5,6 +5,7 @@ public class Aluno {
     private String cpf;
     private int idade;
     private String telefone;
+    private Aula tipoDeAula;
     
     public Aluno (String nome, String cpf, int idade, String telefone){
         this.nome = nome; 
@@ -28,7 +29,13 @@ public class Aluno {
     public String getTelefone(){
         return this.telefone;
     }
-
+    public Aula getTipoDeAula(){
+        return this.tipoDeAula;
+    }
+    
+    public void setAula(Aula aula){
+        this.tipoDeAula = aula;
+    }
 
     
 }

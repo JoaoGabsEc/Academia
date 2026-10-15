@@ -3,33 +3,16 @@ package academia;
 
 public class Aula {
     private double valorDaDiaria = 100;
-    private String superior;
-    private String inferior;
+    private String tipoDeAula;
    
- public Aula (double valorDaDiaria, String superior){
-     this.valorDaDiaria = valorDaDiaria;
-     this.superior = superior;
-     
- }
- 
-  public Aula ( String inferior ,double valorDaDiaria){
-     this.valorDaDiaria = valorDaDiaria;
-     this.inferior = inferior;
-     
+ public Aula (double valorDaDiaria, String tipoDeAula){
+     this.valorDaDiaria = valorDaDiaria; 
+     this.tipoDeAula = tipoDeAula;
   }
-     
-     
     public double getValorDaDiaria(){
         return this.valorDaDiaria;
+    }  
+    public String getTipoDeAula(){
+        return this.tipoDeAula;
     }
-    
-    public String getSuperior(){
-        return this.superior;
-    }
-    
-    public String getInferior(){
-        return this.inferior;
-    }
-    
-    
 }
