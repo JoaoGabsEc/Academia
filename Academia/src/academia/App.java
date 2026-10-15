@@ -11,17 +11,22 @@ public class App {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Bem vindo a Academia " + academia.getNome());
+        
         int escolha;
         int escolhaAula;
+        int escolhaAluno;
+        int escolhaInstrutor;
+        
         do {
             
             System.out.println("\nOla, qual acao deseja realizar?\n");
             System.out.println("1 - Cadastrar um Aluno.");
             System.out.println("2 - Cadastrar um Instrutor.");
-            System.out.println("3 - Listar Alunos.");
-            System.out.println("4 - Listar Instrutores.");
-            System.out.println("5 - Visualizar os tipos de aulas.");
-            System.out.println("6 - Sobre nos.");
+            System.out.println("3 - Vincular alunos a Instrutores.");
+            System.out.println("4 - Listar Alunos.");
+            System.out.println("5 - Listar Instrutores.");
+            System.out.println("6 - Visualizar os tipos de aulas.");
+            System.out.println("7 - Sobre nos.");
             System.out.println("0 - Sair.");
 
             System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -98,36 +103,58 @@ public class App {
 
                     break;
                 }
-
                 case 3: {
-
-                    System.out.println("Aqui esta a lista de alunos!");
+                    int numeroDoAluno = 1;
+                    int numeroDoInstrutor = 1;
+                    System.out.println("\n");
+                    
                     for (int i = 0; i < academia.listarAlunos().size(); i++) {
 
                         System.out.println("=======================");
                         Aluno aluno = academia.listarAlunos().get(i);
-                        Aula aula = academia.listarAula().get(i);
+                        
+                        System.out.println("Aluno: " + numeroDoAluno);
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
-                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula());
-                        System.out.println("=======================");
-
+                        numeroDoAluno++;
                     }
-
-                    break;
-                }
-
-                case 4: {
-
-                    System.out.println("Aqui está a lista de Instrutores!");
+                    System.out.println("Selecione o numero do aluno que deseja.");
+                    escolhaAluno = scan.nextInt();
+                    
+                    System.out.println("\n");
+                    
+                    
                     for (int i = 0; i < academia.listarInstrutores().size(); i++) {
 
                         System.out.println("=======================");
                         Instrutor instrutor = academia.listarInstrutores().get(i);
+                        
+                        System.out.println("Instrutor: " + numeroDoInstrutor);
                         System.out.println("Nome do instrutor: " + instrutor.getNome());
                         System.out.println("CPF: " + instrutor.getCpf());
-                        System.out.println("Disponibilidade:" + instrutor.getDisponibilidade());
+                        numeroDoInstrutor++;
+                        
+                    }
+                    System.out.println("Selecione o numero do Instrutor que deseja.");
+                    escolhaInstrutor = scan.nextInt();
+                    
+                    break;
+                }
+                case 4: {
+                    int numeroDoAluno = 1;
+                    int numeroDoInstrutor = 1;
+                    System.out.println("Aqui esta a lista de alunos!");
+                    for (int i = 0; i < academia.listarAlunos().size(); i++) {
+                        
                         System.out.println("=======================");
+                        Aluno aluno = academia.listarAlunos().get(i);
+                        Aula aula = academia.listarAula().get(i);
+                        System.out.println("Aluno: " + numeroDoAluno);
+                        System.out.println("Nome: " + aluno.getNome());
+                        System.out.println("CPF: " + aluno.getCpf());
+                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula());
+                        System.out.println("=======================");
+                        numeroDoAluno ++;
 
                     }
 
@@ -135,11 +162,31 @@ public class App {
                 }
 
                 case 5: {
+                    int numeroDoAluno = 1;
+                    int numeroDoInstrutor = 1;
+                    
+                    System.out.println("Aqui está a lista de Instrutores!");
+                    for (int i = 0; i < academia.listarInstrutores().size(); i++) {
+
+                        System.out.println("=======================");
+                        Instrutor instrutor = academia.listarInstrutores().get(i);
+                        System.out.println("Instrutor: " + numeroDoInstrutor);
+                        System.out.println("Nome do instrutor: " + instrutor.getNome());
+                        System.out.println("CPF: " + instrutor.getCpf());
+                        System.out.println("Disponibilidade:" + instrutor.getDisponibilidade());
+                        System.out.println("=======================");
+                        numeroDoInstrutor++;
+                    }
+
+                    break;
+                }
+
+                case 6: {
                     System.out.println("Lista de aulas");
                     break;
                 }
                 
-                case 6: {
+                case 7: {
                 
                     System.out.println("\n======================");
                     System.out.println("Academia " + academia.getNome());
