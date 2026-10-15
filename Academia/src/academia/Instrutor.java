@@ -9,6 +9,7 @@ public class Instrutor {
         this.nome = nome;
         this.cpf = cpf; // precisa do cpf??
         this.disponibilidade = disponibilidade;
+        
     }
         
     public String getNome(){

@@ -10,7 +10,7 @@ public class App {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Bem vindo a Academia " + academia.getNome());
+        System.out.println("Bem vindo a Academia " + academia.getNome() + "!!");
         
         int escolha;
         int escolhaAula;
@@ -27,6 +27,7 @@ public class App {
             System.out.println("5 - Listar Instrutores.");
             System.out.println("6 - Visualizar os tipos de aulas.");
             System.out.println("7 - Sobre nos.");
+            System.out.println("8 - Retirar aluno do sistema.");
             System.out.println("0 - Sair.");
 
             System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -152,7 +153,7 @@ public class App {
                         System.out.println("Aluno: " + numeroDoAluno);
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
-                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula());
+                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula()); // o priemiro aponta pro endereco e o segundo pro valor.
                         System.out.println("=======================");
                         numeroDoAluno ++;
 
@@ -183,6 +184,14 @@ public class App {
 
                 case 6: {
                     System.out.println("Lista de aulas");
+                    System.out.println("Servicos disponiveis");
+                    //superior e inferior
+                    
+                    System.out.println("Aulas ja registradas");
+                    
+                    // ex aluno paulo aula superior quarta
+                    // aluna maria aula inferior quinta
+                    
                     break;
                 }
                 
@@ -194,6 +203,10 @@ public class App {
                     System.out.println("Localizados no endereco " + academia.getEndereco());
                     System.out.println("Fale com a nossa equipe via Whatsaap " + academia.getTelefone());
                     System.out.println("\n======================");
+                }
+                case 8: {
+                    // retiraar alunos do sistema
+                    break;
                 }
             }
 
