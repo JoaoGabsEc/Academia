@@ -96,10 +96,10 @@ public class App {
 
                     boolean disponibilidade = true;
 
-                    Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade);
-
+                    Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade, null);
+                    
                     academia.cadastrarInstrutor(instrutor);
-
+                    
                     System.out.println("Instrutor Cadastrado!");
 
                     break;
@@ -185,16 +185,31 @@ public class App {
                 case 6: {
                     System.out.println("Lista de aulas");
                     System.out.println("Servicos disponiveis");
+                    
                     //superior e inferior
+                    System.out.println("1 - Superior: R$ 120,00");
+                    System.out.println("2 - Inferior: R$ 120,00");
+
                     
                     System.out.println("Aulas ja registradas");
                     
+                    for (int i = 0; i < academia.listarAula().size(); i++) {
+
+                    Aula aula = academia.listarAula().get(i);
+
                     // ex aluno paulo aula superior quarta
                     // aluna maria aula inferior quinta
-                    
-                    break;
+                    System.out.println("=======================");
+                    System.out.println("Aula: " + (i + 1));
+                    System.out.println("Tipo de aula: " + aula.getTipoDeAula());
+                    System.out.println("Valor da diaria: R$ " + aula.getValorDaDiaria());
+                    System.out.println("=======================");
                 }
-                
+
+                   break;
+                }
+                    
+
                 case 7: {
                 
                     System.out.println("\n======================");

@@ -4,11 +4,13 @@ public class Instrutor {
     private String nome;
     private String cpf;
     private boolean disponibilidade;
+    private Aluno aluno;
     
-    public Instrutor(String nome, String cpf, boolean disponibilidade){
+    public Instrutor(String nome, String cpf, boolean disponibilidade, Aluno aluno){
         this.nome = nome;
         this.cpf = cpf; // precisa do cpf??
         this.disponibilidade = disponibilidade;
+        this.aluno = aluno;
         
     }
         
