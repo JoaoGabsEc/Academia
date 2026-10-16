@@ -45,7 +45,11 @@ public class Academia {
         return this.alunos;
 
     }
-
+    
+    public void removerAluno(Aluno aluno) {
+        alunos.remove(aluno);
+    }
+    
     // cadastrar instrutor 
     public void cadastrarInstrutor(Instrutor instrutor) {
         this.instrutores.add(instrutor);
