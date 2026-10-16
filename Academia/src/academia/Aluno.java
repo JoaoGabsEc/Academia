@@ -6,6 +6,7 @@ public class Aluno {
     private int idade;
     private String telefone;
     private Aula tipoDeAula;
+    private Instrutor instrutor;
     
     public Aluno (String nome, String cpf, int idade, String telefone){
         this.nome = nome; 
@@ -36,6 +37,12 @@ public class Aluno {
     public void setAula(Aula aula){
         this.tipoDeAula = aula;
     }
-
     
+    public Instrutor getInstrutor(){
+    return this.instrutor;
+    }
+ 
+    public void setInstrutor(Instrutor instrutor){
+    this.instrutor = instrutor;
+    }
 }

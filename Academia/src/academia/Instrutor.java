@@ -6,11 +6,10 @@ public class Instrutor {
     private boolean disponibilidade;
     private Aluno aluno;
     
-    public Instrutor(String nome, String cpf, boolean disponibilidade, Aluno aluno){
+    public Instrutor(String nome, String cpf, boolean disponibilidade){
         this.nome = nome;
         this.cpf = cpf; // precisa do cpf??
         this.disponibilidade = disponibilidade;
-        this.aluno = aluno;
         
     }
         
@@ -30,6 +29,13 @@ public class Instrutor {
         this.disponibilidade = disponibilidade;
     }
     
+   public Aluno getAluno(){
+    return this.aluno;
+    }
+    
+   public void setAluno(Aluno aluno){
+    this.aluno = aluno;
+    }
     
     
 }

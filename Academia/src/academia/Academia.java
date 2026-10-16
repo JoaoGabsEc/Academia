@@ -45,11 +45,17 @@ public class Academia {
         return this.alunos;
 
     }
-    
-    public void removerAluno(Aluno aluno) {
-        alunos.remove(aluno);
+
+    public void removeAluno(Aluno aluno) {
+        Instrutor instrutor = aluno.getInstrutor();
+        if (instrutor != null) {
+            instrutor.setAluno(null);
+            instrutor.setDisponibilidade(true);
+        }
+        this.aulas.remove(aluno.getTipoDeAula());
+        this.alunos.remove(aluno);
     }
-    
+
     // cadastrar instrutor 
     public void cadastrarInstrutor(Instrutor instrutor) {
         this.instrutores.add(instrutor);
@@ -64,12 +70,25 @@ public class Academia {
     public void cadastrarAula(Aula aula) {
         this.aulas.add(aula);
     }
+
     //listar aula
     public ArrayList<Aula> listarAula() {
         return this.aulas;
     }
-    
-    public String getCnpj(){
+
+    public String getCnpj() {
         return this.cnpj;
+    }
+
+    public boolean vincularInstrutor(Aluno aluno, Instrutor instrutor) {
+        if (aluno.getInstrutor() != null || !instrutor.getDisponibilidade()) {
+            return false;
+        } else {
+            aluno.setInstrutor(instrutor);
+            instrutor.setAluno(aluno);
+            instrutor.setDisponibilidade(false);
+            return true;
+        }
+        
     }
 }
