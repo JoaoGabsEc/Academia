@@ -36,16 +36,22 @@ public class App {
 
             switch (escolha) {
                 case 1: {
-                    System.out.println("Digite o nome do aluno.");
+                    System.out.println("Digite o nome do aluno:");
                     String nome = scan.next();
 
-                    System.out.println("Digite o cpf do aluno.");
+                    System.out.println("Digite o cpf do aluno:");
                     String cpf = scan.next();
 
-                    System.out.println("Digite a idade do aluno.");
+                    System.out.println("Digite a idade do aluno:");
                     int idade = scan.nextInt();
 
-                    System.out.println("Digite o numero de telefone do aluno.");
+                    while (idade < 10 || idade > 100) {
+                        System.out.println("Idade inválida, digite uma idade válida:");
+                        System.out.println("Digite novamente a idade do aluno:");
+                        idade = scan.nextInt();
+                    }
+
+                    System.out.println("Digite o numero de telefone do aluno:");
                     String telefone = scan.next();
 
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
@@ -171,7 +177,7 @@ public class App {
                         Instrutor instrutor = academia.listarInstrutores().get(i);
                         System.out.println("Instrutor: " + numeroDoInstrutor);
                         System.out.println("Nome do instrutor: " + instrutor.getNome());
-                        System.out.println("CPF: " + instrutor.getCpf());                       
+                        System.out.println("CPF: " + instrutor.getCpf());
                         System.out.println("Disponibilidade: " + (instrutor.getDisponibilidade() ? "Disponivel" : "Ocupado"));
                         System.out.println("=======================");
                         numeroDoInstrutor++;
