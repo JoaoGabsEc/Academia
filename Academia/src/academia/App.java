@@ -36,19 +36,14 @@ public class App {
 
             switch (escolha) {
                 case 1: {
-<<<<<<< HEAD
                     System.out.println("=================================");
                     System.out.println("Digite o nome do aluno.");
-=======
                     System.out.println("Digite o nome do aluno:");
->>>>>>> 4f26e80479d0c3558f5567f12ee52c31ff1be5d9
                     String nome = scan.next();
 
-                    System.out.println("Digite o cpf do aluno.");
                     System.out.println("Digite o cpf do aluno:");
                     String cpf = scan.next();
 
-                    System.out.println("Digite a idade do aluno.");
                     System.out.println("Digite a idade do aluno:");
                     int idade = scan.nextInt();
 
