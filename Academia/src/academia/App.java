@@ -23,12 +23,12 @@ public class App {
             System.out.println("\nOla, qual acao deseja realizar?\n");
             System.out.println("1 - Cadastrar um Aluno.");
             System.out.println("2 - Cadastrar um Instrutor.");
-            System.out.println("3 - Vincular alunos a Instrutores.");
+            System.out.println("3 - Vincular Alunos a Instrutores.");
             System.out.println("4 - Listar Alunos.");
             System.out.println("5 - Listar Instrutores.");
-            System.out.println("6 - Visualizar os tipos de aulas.");
-            System.out.println("7 - Sobre nos.");
-            System.out.println("8 - Retirar aluno do sistema.");
+            System.out.println("6 - Visualizar Agenda de Aulas.");
+            System.out.println("7 - Sobre Nos.");
+            System.out.println("8 - Retirar Aluno do Sistema.");
             System.out.println("0 - Sair.");
 
             System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -36,6 +36,7 @@ public class App {
 
             switch (escolha) {
                 case 1: {
+                    System.out.println("=================================");
                     System.out.println("Digite o nome do aluno.");
                     String nome = scan.next();
 
@@ -50,20 +51,18 @@ public class App {
 
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
 
-                    System.out.println("\nAluno cadastrado com sucesso!\n");
-
                     academia.cadastrarAluno(aluno);
-
-                    System.out.println("Agora escolha qual aula deseja cadastrar o aluno\n");
-                    System.out.println("Aulas disponiveis!\n");
+                    
+                    System.out.println("\nAgora escolha qual aula deseja cadastrar o aluno\n");
+                    
                     do {
                         System.out.println("1 -- Superior -- R$ 60,00");
                         System.out.println("2 -- Inferior -- R$ 70,00");
                         escolhaAula = scan.nextInt();
 
-                        if (escolhaAula == 1) {
+                        if (escolhaAula == 1) { 
 
-                            Aula aula = new Aula(120, "Superior");
+                            Aula aula = new Aula(60, "Superior");
 
                             aluno.setAula(aula);
 
@@ -71,7 +70,7 @@ public class App {
 
                         } else if (escolhaAula == 2) {
 
-                            Aula aula = new Aula(120, "Inferior");
+                            Aula aula = new Aula(70, "Inferior");
 
                             aluno.setAula(aula);
                             academia.cadastrarAula(aula);
@@ -81,32 +80,35 @@ public class App {
 
                     } while (escolhaAula != 1 && escolhaAula != 2);
 
-                    System.out.println("\nAula vinculada ao aluno " + nome + " com sucesso!\n");
-
+                    System.out.println("\nAula vinculada ao aluno " + aluno.getNome() + " com sucesso!\n");
+                    System.out.println("=================================");
                     break;
                 }
 
                 case 2: {
+                    System.out.println("=================================");
                     System.out.println("Digite o nome do Instrutor");
                     String nome = scan.next();
 
                     System.out.println("Digite o cpf do Instrutor");
                     String cpf = scan.next();
-
+                    
                     boolean disponibilidade = true;
 
                     Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade);
 
                     academia.cadastrarInstrutor(instrutor);
 
-                    System.out.println("Instrutor Cadastrado!");
-
+                    System.out.println("Instrutor "+ instrutor.getNome()  +"Cadastrado!");
+                    System.out.println("=================================");
                     break;
                 }
                 case 3: {
 
                     if (academia.listarAlunos().size() == 0 || academia.listarInstrutores().size() == 0) {
+                        System.out.println("=================================");
                         System.out.println("Cadastre ao menos um aluno e um instrutor primeiro.");
+                        System.out.println("=================================");
                         break;
                     }
 
@@ -145,14 +147,14 @@ public class App {
                     System.out.println("Aqui esta a lista de alunos!");
                     for (int i = 0; i < academia.listarAlunos().size(); i++) {
 
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                         Aluno aluno = academia.listarAlunos().get(i);
                         Aula aula = academia.listarAula().get(i);
                         System.out.println("Aluno: " + numeroDoAluno);
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
                         System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula()); // o priemiro aponta pro endereco e o segundo pro valor.
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                         numeroDoAluno++;
 
                     }
@@ -167,13 +169,13 @@ public class App {
                     System.out.println("Aqui esta a lista de Instrutores!");
                     for (int i = 0; i < academia.listarInstrutores().size(); i++) {
 
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                         Instrutor instrutor = academia.listarInstrutores().get(i);
                         System.out.println("Instrutor: " + numeroDoInstrutor);
                         System.out.println("Nome do instrutor: " + instrutor.getNome());
                         System.out.println("CPF: " + instrutor.getCpf());                       
                         System.out.println("Disponibilidade: " + (instrutor.getDisponibilidade() ? "Disponivel" : "Ocupado"));
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                         numeroDoInstrutor++;
                     }
 
@@ -181,23 +183,18 @@ public class App {
                 }
 
                 case 6: {
-                    System.out.println("Lista de aulas");
-                    System.out.println("Servicos disponiveis\n\n");
-
-                    System.out.println("1 - Superior: R$ 60,00");
-                    System.out.println("2 - Inferior: R$ 70,00");
-
-                    System.out.println("Aulas ja registradas!");
+                    System.out.println("Aulas Agendadas!");
 
                     for (int i = 0; i < academia.listarAula().size(); i++) {
-
+                        
+                        Aluno aluno = academia.listarAlunos().get(i);
                         Aula aula = academia.listarAula().get(i);
 
-                        System.out.println("=======================");
-                        System.out.println("Aula: " + (i + 1));
+                        System.out.println("=================================");
+                        System.out.println("Aluno: " + aluno.getNome());
                         System.out.println("Tipo de aula: " + aula.getTipoDeAula());
                         System.out.println("Valor da diaria: R$ " + aula.getValorDaDiaria());
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                     }
 
                     break;
@@ -205,12 +202,12 @@ public class App {
 
                 case 7: {
 
-                    System.out.println("\n======================");
+                    System.out.println("=================================");
                     System.out.println("Academia " + academia.getNome());
                     System.out.println("CNPJ: " + academia.getCnpj());
                     System.out.println("Localizados no endereco " + academia.getEndereco());
                     System.out.println("Fale com a nossa equipe via Whatsaap " + academia.getTelefone());
-                    System.out.println("\n======================");
+                    System.out.println("=================================");
 
                     break;
                 }
@@ -228,7 +225,7 @@ public class App {
                     for (int i = 0; i < academia.listarAlunos().size(); i++) {
                         Aluno aluno = academia.listarAlunos().get(i);
 
-                        System.out.println("=======================");
+                        System.out.println("=================================");
                         System.out.println("Aluno: " + (i + 1));
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
