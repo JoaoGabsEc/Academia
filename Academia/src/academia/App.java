@@ -180,6 +180,7 @@ public class App {
                         Instrutor instrutor = academia.listarInstrutores().get(i);
                         System.out.println("Instrutor: " + numeroDoInstrutor);
                         System.out.println("Nome do instrutor: " + instrutor.getNome());
+                        System.out.println("CPF: " + instrutor.getCpf());
                         System.out.println("Disponibilidade: " + (instrutor.getDisponibilidade() ? "Disponivel" : "Ocupado"));
                         System.out.println("=================================");
                         numeroDoInstrutor++;
