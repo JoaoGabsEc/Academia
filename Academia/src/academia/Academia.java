@@ -35,12 +35,10 @@ public class Academia {
         return this.telefone;
     }
 
-    // cadastrar aluno
     public void cadastrarAluno(Aluno aluno) {
         this.alunos.add(aluno);
     }
 
-    // listar alunos
     public ArrayList<Aluno> listarAlunos() {
         return this.alunos;
 
@@ -56,22 +54,18 @@ public class Academia {
         this.alunos.remove(aluno);
     }
 
-    // cadastrar instrutor 
     public void cadastrarInstrutor(Instrutor instrutor) {
         this.instrutores.add(instrutor);
     }
-    // listar instrutor
 
     public ArrayList<Instrutor> listarInstrutores() {
         return this.instrutores;
     }
 
-    //cadastrar aula
     public void cadastrarAula(Aula aula) {
         this.aulas.add(aula);
     }
 
-    //listar aula
     public ArrayList<Aula> listarAula() {
         return this.aulas;
     }
@@ -89,34 +83,30 @@ public class Academia {
             instrutor.setDisponibilidade(false);
             return true;
         }
-        
-    }
-    
-     public boolean verificarCpfAluno(String cpf){
-        for (Aluno aluno : alunos){
-            if(aluno.getCpf().equals(cpf)){
-                return true;
-            }
-        }
-        return false;
-    }
-     
-     public boolean verificarTelefone(String cpf){
-        for (Aluno aluno : alunos){
-            if(aluno.getCpf().equals(cpf)){
-                return true;
-            }
-        }
-        return false;
-    }
-     
-     public boolean verificarCpfInstrutor(String cpf){
-        for (Instrutor instrutor : instrutores){
-            if(instrutor.getCpf().equals(cpf)){
-                return true;
-            }
-        }
-        return false;
-    }
-}   
 
+    }
+
+    public boolean verificarTelefone(String telefone) {
+        for (Aluno aluno : alunos) {
+            if (aluno.getTelefone().equals(telefone)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarCpf(String cpf) {
+        for (Instrutor instrutor : instrutores) {
+            if (instrutor.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        for (Aluno aluno : alunos) {
+            if (aluno.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}

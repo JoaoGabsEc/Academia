@@ -16,7 +16,6 @@ public class App {
         int escolha;
         int escolhaAula;
         int escolhaAluno;
-        int escolhaInstrutor;
 
         do {
 
@@ -43,7 +42,7 @@ public class App {
                     System.out.println("Digite o cpf do aluno:");
                     String cpf = scan.next();
                     
-                    while(academia.verificarCpfAluno(cpf)){
+                    while(academia.verificarCpf(cpf)){
                         System.out.println("Este cpf ja foi cadastrado, Digite um cpf valido!");
                         cpf = scan.next();
                     }
@@ -52,7 +51,7 @@ public class App {
                     int idade = scan.nextInt();
 
                     while (idade < 10 || idade > 100) {
-                        System.out.println("Idade inválida, digite uma idade válida:");
+                        System.out.println("Idade invalida, digite uma idade valida:");
                         System.out.println("Digite novamente a idade do aluno:");
                         idade = scan.nextInt();
                     }
@@ -60,7 +59,7 @@ public class App {
                     System.out.println("Digite o numero de telefone do aluno:");
                     String telefone = scan.next();
                     
-                    while(academia.verificarTelefone(cpf)){
+                    while(academia.verificarTelefone(telefone)){
                         System.out.println("Este numero ja esta cadastrado, Digite um numero valido!");
                         telefone = scan.next();
                     }
@@ -108,7 +107,7 @@ public class App {
                     System.out.println("Digite o cpf do Instrutor");
                     String cpf = scan.next();
                     
-                    while(academia.verificarCpfInstrutor(cpf)){
+                    while(academia.verificarCpf(cpf)){
                         System.out.println("Este cpf ja foi cadastrado, Digite um cpf valido!");
                         cpf = scan.next();
                     }
@@ -131,7 +130,7 @@ public class App {
                         System.out.println("=================================");
                         break;
                     }
-
+                    System.out.println("=================================");
                     System.out.println("Alunos:");
                     for (int i = 0; i < academia.listarAlunos().size(); i++) {
                         System.out.println((i + 1) + " - " + academia.listarAlunos().get(i).getNome());
@@ -148,16 +147,22 @@ public class App {
 
                     if (opcaoAluno < 1 || opcaoAluno > academia.listarAlunos().size() || opcaoInstrutor < 1 || opcaoInstrutor > academia.listarInstrutores().size()) {
                         System.out.println("Opcao invalida.");
+                        System.out.println("=================================");
                         break;
                     }
 
-                    Aluno aluno = academia.listarAlunos().get(opcaoAluno - 1);
+                    // remove 1 pq add 1 na hora de listar
+                    Aluno aluno = academia.listarAlunos().get(opcaoAluno - 1); 
                     Instrutor instrutor = academia.listarInstrutores().get(opcaoInstrutor - 1);
 
                     if (academia.vincularInstrutor(aluno, instrutor)) {
-                        System.out.println(aluno + " vinculado a " + instrutor.getNome() + "!");
+                        System.out.println(aluno.getNome() + " vinculado a " + instrutor.getNome() + "!");
+                        System.out.println("=================================");
                     } else {
-                        System.out.println("Aluno ja tem instrutor ou instrutor ja esta ocupado.");
+                        
+                        System.out.println("\nAluno ja tem instrutor ou instrutor ja esta ocupado.");
+                        System.out.println("=================================");
+                        
                     }
                     break;
                 }
