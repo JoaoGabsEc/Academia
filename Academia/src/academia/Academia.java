@@ -54,6 +54,15 @@ public class Academia {
         this.alunos.remove(aluno);
     }
 
+    public void removeInstrutor(Instrutor instrutor) {
+        Aluno aluno = instrutor.getAluno();
+        if (aluno != null) {
+            aluno.setInstrutor(null);
+        }
+        this.aulas.remove(instrutor.getAluno());
+        this.instrutores.remove(instrutor);
+    }
+
     public void cadastrarInstrutor(Instrutor instrutor) {
         this.instrutores.add(instrutor);
     }

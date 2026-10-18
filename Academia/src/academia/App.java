@@ -1,7 +1,6 @@
 package academia;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class App {
 
@@ -16,6 +15,7 @@ public class App {
         int escolha;
         int escolhaAula;
         int escolhaAluno;
+        int escolhaInstrutor;
 
         do {
 
@@ -28,6 +28,7 @@ public class App {
             System.out.println("6 - Visualizar Agenda de Aulas.");
             System.out.println("7 - Sobre Nos.");
             System.out.println("8 - Retirar Aluno do Sistema.");
+            System.out.println("9 - Retirar Instrutor do Sistema.");
             System.out.println("0 - Sair.");
 
             System.out.println("\nEscolha o numero relacionado a sua opcao.\n");
@@ -62,10 +63,10 @@ public class App {
 
                     System.out.println("Digite o numero de telefone do aluno:");
                     String telefone = scan.next();
-                    while(telefone.length() != 11){
+                    while (telefone.length() != 11) {
                         System.out.println("Telefone invalido, digite um telefone valido");
                         telefone = scan.next();
-                        
+
                     }
                     while (academia.verificarTelefone(telefone) || telefone.length() != 11) {
                         System.out.println("Este telefone ja esta cadastrado ou telefone invalido, Digite um numero valido!");
@@ -85,15 +86,12 @@ public class App {
                         if (escolhaAula == 1) {
 
                             Aula aula = new Aula(60, "Superior");
-
                             aluno.setAula(aula);
-
                             academia.cadastrarAula(aula);
 
                         } else if (escolhaAula == 2) {
 
                             Aula aula = new Aula(70, "Inferior");
-
                             aluno.setAula(aula);
                             academia.cadastrarAula(aula);
                         } else {
@@ -102,7 +100,7 @@ public class App {
 
                     } while (escolhaAula != 1 && escolhaAula != 2);
 
-                    System.out.println("\nAula vinculada ao aluno " + aluno.getNome() + " com sucesso!\n");
+                    System.out.println("Aula vinculada ao aluno " + aluno.getNome() + " com sucesso!\n");
                     System.out.println("=================================");
                     break;
                 }
@@ -111,17 +109,16 @@ public class App {
                     System.out.println("=================================");
                     System.out.println("Digite o nome do Instrutor");
                     String nome = scan.next();
-                    
 
                     System.out.println("Digite o cpf do Instrutor");
                     String cpf = scan.next();
-                     while (cpf.length() != 11) {
+                    while (cpf.length() != 11) {
                         System.out.println("Cpf invalido, digite um cpf valido");
                         cpf = scan.next();
                     }
 
-                    while (academia.verificarCpf(cpf)) {
-                        System.out.println("Este cpf ja foi cadastrado, Digite um cpf valido!");
+                    while (academia.verificarCpf(cpf) || cpf.length() != 11) {
+                        System.out.println("Este cpf ja foi cadastrado ou cpf invalido, digite um cpf valido!");
                         cpf = scan.next();
                     }
 
@@ -181,62 +178,88 @@ public class App {
                 }
                 case 4: {
                     int numeroDoAluno = 1;
-                    int numeroDoInstrutor = 1;
-                    System.out.println("Aqui esta a lista de alunos!");
-                    for (int i = 0; i < academia.listarAlunos().size(); i++) {
-
+                    if (academia.listarAlunos().size() > 0) {
                         System.out.println("=================================");
-                        Aluno aluno = academia.listarAlunos().get(i);
-                        Aula aula = academia.listarAula().get(i);
-                        System.out.println("Aluno: " + numeroDoAluno);
-                        System.out.println("Nome: " + aluno.getNome());
-                        System.out.println("CPF: " + aluno.getCpf());
-                        System.out.println("Telefone: " + aluno.getTelefone());
-                        System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula()); // o priemiro aponta pro endereco e o segundo pro valor.
-                        System.out.println("=================================");
-                        numeroDoAluno++;
+                        System.out.println("Aqui esta a lista de alunos!");
+                        for (int i = 0; i < academia.listarAlunos().size(); i++) {
 
+                            Aluno aluno = academia.listarAlunos().get(i);
+                            System.out.println("Aluno: " + numeroDoAluno);
+                            System.out.println("Nome: " + aluno.getNome());
+                            System.out.println("CPF: " + aluno.getCpf());
+                            System.out.println("Telefone: " + aluno.getTelefone());
+                            System.out.println("Aula vinculada ao aluno:" + aluno.getTipoDeAula().getTipoDeAula()); // o primeiro get pega o objeto aula que ta no aluno, o segundo get pega o nome da aula.
+                            if (aluno.getInstrutor() != null) {
+                                System.out.println("Instrutor: " + aluno.getInstrutor().getNome());
+                            } else {
+                                System.out.println("Instrutor: Nenhum instrutor vinculado");
+                            }
+
+                            System.out.println("=================================");
+                            numeroDoAluno++;
+
+                        }
+                    } else {
+                        System.out.println("=================================");
+                        System.out.println("Nenhum aluno Cadastrado!");
+                        System.out.println("=================================");
                     }
-
                     break;
                 }
 
                 case 5: {
-                    int numeroDoAluno = 1;
                     int numeroDoInstrutor = 1;
 
-                    System.out.println("Aqui esta a lista de Instrutores!");
-                    for (int i = 0; i < academia.listarInstrutores().size(); i++) {
+                    if (academia.listarInstrutores().size() > 0) {
+                        System.out.println("=================================");
+                        System.out.println("Aqui esta a lista de Instrutores!");
+                        for (int i = 0; i < academia.listarInstrutores().size(); i++) {
 
+                            System.out.println("=================================");
+                            Instrutor instrutor = academia.listarInstrutores().get(i);
+                            System.out.println("Instrutor: " + numeroDoInstrutor);
+                            System.out.println("Nome do instrutor: " + instrutor.getNome());
+                            System.out.println("CPF: " + instrutor.getCpf());
+                            System.out.println("Disponibilidade: " + (instrutor.getDisponibilidade() ? "Disponivel" : "Ocupado"));
+                            System.out.println("=================================");
+                            numeroDoInstrutor++;
+                        }
+                    } else {
                         System.out.println("=================================");
-                        Instrutor instrutor = academia.listarInstrutores().get(i);
-                        System.out.println("Instrutor: " + numeroDoInstrutor);
-                        System.out.println("Nome do instrutor: " + instrutor.getNome());
-                        System.out.println("CPF: " + instrutor.getCpf());
-                        System.out.println("Disponibilidade: " + (instrutor.getDisponibilidade() ? "Disponivel" : "Ocupado"));
+                        System.out.println("Nenhum Instrutor Cadastrado!");
                         System.out.println("=================================");
-                        numeroDoInstrutor++;
                     }
 
                     break;
                 }
 
                 case 6: {
-                    System.out.println("=================================");
-                    System.out.println("Aulas Agendadas!");
 
-                    for (int i = 0; i < academia.listarAula().size(); i++) {
-
-                        Aluno aluno = academia.listarAlunos().get(i);
-                        Aula aula = academia.listarAula().get(i);
-
+                    if (academia.listarAula().size() > 0) {
                         System.out.println("=================================");
-                        System.out.println("Aluno: " + aluno.getNome());
-                        System.out.println("Tipo de aula: " + aula.getTipoDeAula());
-                        System.out.println("Valor da diaria: R$ " + aula.getValorDaDiaria());
+                        System.out.println("Aulas Agendadas!");
+                        System.out.println("=================================");
+
+                        for (int i = 0; i < academia.listarAula().size(); i++) {
+
+                            Aluno aluno = academia.listarAlunos().get(i);
+                            Aula aula = academia.listarAula().get(i);
+
+                            System.out.println("Aluno: " + aluno.getNome());
+                            System.out.println("Tipo de aula: " + aula.getTipoDeAula());
+                            System.out.println("Valor da diaria: R$ " + aula.getValorDaDiaria());
+                            if (aluno.getInstrutor() != null) {
+                                System.out.println("Instrutor: " + aluno.getInstrutor().getNome());
+                            } else {
+                                System.out.println("Instrutor: Nenhum instrutor vinculado");
+                            }
+                            System.out.println("=================================");
+                        }
+                    } else {
+                        System.out.println("=================================");
+                        System.out.println("Sem aulas agendadas");
                         System.out.println("=================================");
                     }
-
                     break;
                 }
 
@@ -253,16 +276,15 @@ public class App {
                 }
 
                 case 8: {
-                    System.out.println("=================================");
-                    System.out.println("Remover Aluno do Sistema");
-                    System.out.println("Digite - 0 - para retornar ao menu!\n");
-
                     if (academia.listarAlunos().size() == 0) {
+                        System.out.println("=================================");
                         System.out.println("Nao existem alunos cadastrados.");
                         System.out.println("=================================");
                         break;
                     }
-
+                    System.out.println("=================================");
+                    System.out.println("Remover Aluno do Sistema");
+                    System.out.println("Digite - 0 - para retornar ao menu!\n");
                     for (int i = 0; i < academia.listarAlunos().size(); i++) {
                         Aluno aluno = academia.listarAlunos().get(i);
 
@@ -281,16 +303,79 @@ public class App {
 
                         academia.removeAluno(aluno);
 
-                        System.out.println("Aluno " + aluno.getNome());
-                        System.out.println("Removido com sucesso!");
+                        System.out.println("Aluno " + aluno.getNome() + " Removido com sucesso!");
                         System.out.println("=================================");
 
                     } else {
-                        System.out.println("Numero de aluno invalido!");
-                        System.out.println("=================================");
+                        while (escolhaAluno >= academia.listarAlunos().size()) {
+                            System.out.println("Numero de aluno invalido!");
+                            System.out.println("Digite um numero valido ou -0- para retornar ao menu!\n");
+
+                            escolhaAluno = scan.nextInt();
+                        }
                     }
+
+                    System.out.println("=================================");
+                    System.out.println("Retornando ao menu!");
+                    System.out.println("=================================");
                     break;
                 }
+                case 9: {
+                    if (academia.listarInstrutores().size() == 0) {
+                        System.out.println("=================================");
+                        System.out.println("Nao existem instrutores cadastrados.");
+                        System.out.println("=================================");
+                        break;
+                    }
+
+                    System.out.println("=================================");
+                    System.out.println("Remover Instrutor do Sistema");
+                    System.out.println("Digite - 0 - para retornar ao menu!\n");
+                    for (int i = 0; i < academia.listarInstrutores().size(); i++) {
+                        Instrutor instrutor = academia.listarInstrutores().get(i);
+
+                        System.out.println("=================================");
+                        System.out.println("Instrutor: " + (i + 1));
+                        System.out.println("Nome: " + instrutor.getNome());
+                        System.out.println("CPF: " + instrutor.getCpf());
+                        System.out.println("=================================");
+                    }
+                    System.out.println("Digite o numero do instrutor que deseja retirar:");
+                    escolhaInstrutor = scan.nextInt();
+
+                    if (escolhaInstrutor >= 1 && escolhaInstrutor <= academia.listarInstrutores().size()) {
+
+                        Instrutor instrutor = academia.listarInstrutores().get(escolhaInstrutor - 1);
+
+                        academia.removeInstrutor(instrutor);
+
+                        System.out.println("Instrutor " + instrutor.getNome() + " Removido com sucesso!");
+                        System.out.println("=================================");
+
+                    } else {
+                        while (escolhaInstrutor >= academia.listarInstrutores().size()) {
+                            System.out.println("Numero de Instrutor invalido!");
+                            System.out.println("Digite um numero valido ou -0- para retornar ao menu!\n");
+                            escolhaInstrutor = scan.nextInt();
+                        }
+                        System.out.println("=================================");
+                        System.out.println("Retornando ao menu!");
+                        System.out.println("=================================");
+                    }
+
+                    break;
+                }
+                case 0: {
+                    System.out.println("=================================");
+                    System.out.println("Saindo do Menu!");
+                    System.out.println("=================================");
+                    break;
+                }
+                default:
+                    System.out.println("=================================");
+                    System.out.println("Opcao Invalida!");
+                    System.out.println("=================================");
+                    break;
             }
 
         } while (escolha != 0);
