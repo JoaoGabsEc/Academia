@@ -38,11 +38,15 @@ public class App {
                 case 1: {
                     System.out.println("=================================");
                     System.out.println("Digite o nome do aluno.");
-                    System.out.println("Digite o nome do aluno:");
                     String nome = scan.next();
 
                     System.out.println("Digite o cpf do aluno:");
                     String cpf = scan.next();
+                    
+                    while(academia.verificarCpfAluno(cpf)){
+                        System.out.println("Este cpf ja foi cadastrado, Digite um cpf valido!");
+                        cpf = scan.next();
+                    }
 
                     System.out.println("Digite a idade do aluno:");
                     int idade = scan.nextInt();
@@ -55,7 +59,11 @@ public class App {
 
                     System.out.println("Digite o numero de telefone do aluno:");
                     String telefone = scan.next();
-
+                    
+                    while(academia.verificarTelefone(cpf)){
+                        System.out.println("Este numero ja esta cadastrado, Digite um numero valido!");
+                        telefone = scan.next();
+                    }
                     Aluno aluno = new Aluno(nome, cpf, idade, telefone);
 
                     academia.cadastrarAluno(aluno);
@@ -100,13 +108,18 @@ public class App {
                     System.out.println("Digite o cpf do Instrutor");
                     String cpf = scan.next();
                     
+                    while(academia.verificarCpfInstrutor(cpf)){
+                        System.out.println("Este cpf ja foi cadastrado, Digite um cpf valido!");
+                        cpf = scan.next();
+                    }
+                    
                     boolean disponibilidade = true;
 
                     Instrutor instrutor = new Instrutor(nome, cpf, disponibilidade);
 
                     academia.cadastrarInstrutor(instrutor);
 
-                    System.out.println("Instrutor "+ instrutor.getNome()  +"Cadastrado!");
+                    System.out.println("Instrutor "+ instrutor.getNome()  + " Cadastrado!");
                     System.out.println("=================================");
                     break;
                 }
@@ -142,7 +155,7 @@ public class App {
                     Instrutor instrutor = academia.listarInstrutores().get(opcaoInstrutor - 1);
 
                     if (academia.vincularInstrutor(aluno, instrutor)) {
-                        System.out.println(instrutor.getNome() + " vinculado a " + aluno.getNome() + "!");
+                        System.out.println(aluno + " vinculado a " + instrutor.getNome() + "!");
                     } else {
                         System.out.println("Aluno ja tem instrutor ou instrutor ja esta ocupado.");
                     }
@@ -190,6 +203,7 @@ public class App {
                 }
 
                 case 6: {
+                    System.out.println("=================================");
                     System.out.println("Aulas Agendadas!");
 
                     for (int i = 0; i < academia.listarAula().size(); i++) {
@@ -220,12 +234,13 @@ public class App {
                 }
 
                 case 8: {
-
+                    System.out.println("=================================");
                     System.out.println("Remover Aluno do Sistema");
-                    System.out.println("Digite - 0 - para retornar ao menu!");
-
+                    System.out.println("Digite - 0 - para retornar ao menu!\n");
+                    
                     if (academia.listarAlunos().size() == 0) {
                         System.out.println("Nao existem alunos cadastrados.");
+                        System.out.println("=================================");
                         break;
                     }
 
@@ -236,6 +251,7 @@ public class App {
                         System.out.println("Aluno: " + (i + 1));
                         System.out.println("Nome: " + aluno.getNome());
                         System.out.println("CPF: " + aluno.getCpf());
+                        System.out.println("=================================");
                     }
                     System.out.println("Digite o numero do aluno que deseja retirar:");
                     escolhaAluno = scan.nextInt();
@@ -248,9 +264,11 @@ public class App {
 
                         System.out.println("Aluno " + aluno.getNome());
                         System.out.println("Removido com sucesso!");
+                        System.out.println("=================================");
 
                     } else {
                         System.out.println("Numero de aluno invalido!");
+                        System.out.println("=================================");
                     }
                     break;
                 }

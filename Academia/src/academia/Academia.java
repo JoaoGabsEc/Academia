@@ -91,4 +91,32 @@ public class Academia {
         }
         
     }
-}
+    
+     public boolean verificarCpfAluno(String cpf){
+        for (Aluno aluno : alunos){
+            if(aluno.getCpf().equals(cpf)){
+                return true;
+            }
+        }
+        return false;
+    }
+     
+     public boolean verificarTelefone(String cpf){
+        for (Aluno aluno : alunos){
+            if(aluno.getCpf().equals(cpf)){
+                return true;
+            }
+        }
+        return false;
+    }
+     
+     public boolean verificarCpfInstrutor(String cpf){
+        for (Instrutor instrutor : instrutores){
+            if(instrutor.getCpf().equals(cpf)){
+                return true;
+            }
+        }
+        return false;
+    }
+}   
+
