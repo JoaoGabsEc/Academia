@@ -48,4 +48,4 @@ A estrutura exata de pastas e classes pode variar conforme a versão do projeto.
 
 ## Autor
 
-Projeto acadêmico desenvolvido para praticar os conceitos de programação em Java e orientação a objetos.
+Projeto acadêmico feito por Caroline, João Gabriel e Kauã.
