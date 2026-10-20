@@ -1,41 +1,41 @@
 package academia;
 
 public class Instrutor {
+
     private String nome;
     private String cpf;
     private boolean disponibilidade;
     private Aluno aluno;
-    
-    public Instrutor(String nome, String cpf, boolean disponibilidade){
+
+    public Instrutor(String nome, String cpf, boolean disponibilidade) {
         this.nome = nome;
-        this.cpf = cpf; 
+        this.cpf = cpf;
         this.disponibilidade = disponibilidade;
-        
+
     }
-        
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
     }
-    
-    public String getCpf(){
+
+    public String getCpf() {
         return this.cpf;
     }
-    
-    public boolean getDisponibilidade(){
+
+    public boolean getDisponibilidade() {
         return this.disponibilidade;
     }
-    
-    public void setDisponibilidade(boolean disponibilidade){
+
+    public void setDisponibilidade(boolean disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
-    
-   public Aluno getAluno(){
-    return this.aluno;
+
+    public Aluno getAluno() {
+        return this.aluno;
     }
-    
-   public void setAluno(Aluno aluno){
-    this.aluno = aluno;
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
-    
-    
+
 }
