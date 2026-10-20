@@ -8,7 +8,7 @@ public class Instrutor {
     
     public Instrutor(String nome, String cpf, boolean disponibilidade){
         this.nome = nome;
-        this.cpf = cpf; // precisa do cpf??
+        this.cpf = cpf; 
         this.disponibilidade = disponibilidade;
         
     }
